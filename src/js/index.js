@@ -3,7 +3,6 @@ let correctValueTime = (value) => {
 }
 
 function Clock(element) {
-    this.date = new Date()
     this.el = element
 }
 
@@ -11,9 +10,10 @@ function FullTime() {
     Clock.call(this,time)
 }
 FullTime.prototype.render = function () {
-    let hours = correctValueTime(this.date.getHours())
-    let minutes = correctValueTime(this.date.getMinutes())
-    let seconds = correctValueTime(this.date.getSeconds())
+    let date = new Date()
+    let hours = correctValueTime(date.getHours())
+    let minutes = correctValueTime(date.getMinutes())
+    let seconds = correctValueTime(date.getSeconds())
     this.el.innerHTML = `${hours}:${minutes}:${seconds}`
 }
 
@@ -21,8 +21,9 @@ function ShortTime() {
     Clock.call(this,time)
 }
 ShortTime.prototype.render = function () {
-    let hours = correctValueTime(this.date.getHours())
-    let minutes = correctValueTime(this.date.getMinutes())
+    let date = new Date()
+    let hours = correctValueTime(date.getHours())
+    let minutes = correctValueTime(date.getMinutes())
     this.el.innerHTML = `${hours}:${minutes}`
 }
 let time = document.getElementById('time')
